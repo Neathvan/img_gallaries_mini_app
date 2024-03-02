@@ -38,10 +38,14 @@ class IGMImage extends BaseModel {
   late int path;
 
   /// 
+  @JsonKey(ignore: true)
   File? file;
+
+  @JsonKey(ignore: true)
   Rx<APIStatus> uploadFileStatus = APIStatus.empty.obs;
-  @JsonKey()
-  @JsonValue(true)
+
+  @JsonValue(true) 
+  @JsonKey(ignore: true)
   bool isOnServer = true;
 
   IGMImage clone() => IGMImage();

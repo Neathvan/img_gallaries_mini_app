@@ -11,7 +11,9 @@ IGMImage _$IGMImageFromJson(Map<String, dynamic> json) => IGMImage()
   ..name = json['name'] as String?
   ..largeUrl = json['large_url'] as String?
   ..mediumUrl = json['medium_url'] as String?
-  ..text = json['text'] as String?;
+  ..text = json['text'] as String?
+  ..image = json['image'] as String? ?? ''
+  ..path = json['path'] as int;
 
 Map<String, dynamic> _$IGMImageToJson(IGMImage instance) => <String, dynamic>{
       'url': instance.url,
@@ -19,4 +21,6 @@ Map<String, dynamic> _$IGMImageToJson(IGMImage instance) => <String, dynamic>{
       'large_url': instance.largeUrl,
       'medium_url': instance.mediumUrl,
       'text': instance.text,
+      'image': instance.image,
+      'path': instance.path,
     };

@@ -1,22 +1,20 @@
 import 'dart:convert';
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
+import 'package:img_gallaries_mini_app/service/config.dart';
 
-const baseUrl = "http://192.168.1.108:8000/";
-const hostspot = "http://172.20.10.4:8000/api/";
 
 class WebUtil {
   static Dio createDio() {
     var dio = Dio(BaseOptions(
-      baseUrl: hostspot,
+      baseUrl: IGMConfig.baseUrl,
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
       },
       receiveDataWhenStatusError: true,
-      connectTimeout: Duration(seconds: 5), // 60 seconds
-      receiveTimeout: Duration(seconds: 5), // 60 seconds
+      connectTimeout:const Duration(seconds: 60), // 60 seconds
+      receiveTimeout:const Duration(seconds: 60), // 60 seconds
     ));
 
     dio.interceptors.add(LogInterceptor(
