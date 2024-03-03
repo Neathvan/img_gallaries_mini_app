@@ -4,8 +4,9 @@ import 'package:img_gallaries_mini_app/service/api_result.dart';
 import 'package:img_gallaries_mini_app/util/endpoint.dart';
 
 class GallaryRepository extends BaseRepository {
-  Future<ApiResult<List<IGMImage>>> getList() async {
-    var res = await requestGet(Endpoint.imgList);
+  Future<ApiResult<List<IGMImage>>> getList(int page, [int limit = 10]) async {
+    var res = await requestGetWithPagination(Endpoint.imgList,
+        page: page, limit: limit);
 
     return ApiResult.fromJson(res, (data) {
       return List.from(data.map((e) => IGMImage.fromJson(e)));
