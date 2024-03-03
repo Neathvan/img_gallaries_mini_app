@@ -21,19 +21,25 @@ class GallaryController extends BaseController<GallaryRepository> {
     int page = !loadMore ? 0 : gallariesResult.data!.length;
 
     var res = await repo.getList(page, kLimit);
-
+    gallariesResult.apiStatus(res.apiStatus.value);
     // response section
     if (res.apiStatus.value == ApiStatus.loaded) {
-      gallariesResult = res;
+      List<IGMImage> data = res.data ?? [];
+
       // append item to local storage list if load more
       if (loadMore) {
-        gallaryBox.addAll(res.data ?? []);
+        gallaryBox.addAll(data);
       } else {
+        gallariesResult.data?.clear();
         // clear and add new list to gallary is refresh page or first loading
         gallaryBox.clear().then((value) {
-          gallaryBox.addAll(res.data ?? []);
+          gallaryBox.addAll(data);
         });
       }
+
+      /// append for listen status
+      /// to know page number
+      gallariesResult.data?.addAll(data);
     }
     update();
     return res;

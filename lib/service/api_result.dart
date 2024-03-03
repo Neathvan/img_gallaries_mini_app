@@ -17,7 +17,7 @@ class ApiResult<T> {
     ApiResult<T> apiResult = ApiResult<T>();
 
     /// hanlde status code
-    ApiStatus statusResponse(Response response) {
+    statusResponse(Response response) {
       /// code 200
       /// assign data
       if (response.statusCode == 200) {
@@ -30,8 +30,10 @@ class ApiResult<T> {
       return ApiStatus.connectionError;
     }
 
+    var _status = statusResponse(response);
+
     /// check handle error
-    apiResult.apiStatus(statusResponse(response));
+    apiResult.apiStatus(_status);
     return apiResult;
   }
 }

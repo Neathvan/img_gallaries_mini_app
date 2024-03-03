@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:img_gallaries_mini_app/model/igm_image.dart';
-import 'package:img_gallaries_mini_app/util/app_color.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:img_gallaries_mini_app/util/app_color.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class ImageBlock extends StatefulWidget {
@@ -28,9 +28,6 @@ class _ImageBlockState extends State<ImageBlock> {
 
   @override
   void initState() {
-    cacheManager = CacheManager(Config(
-      widget.image.id!,
-    ));
     super.initState();
   }
 
@@ -38,20 +35,18 @@ class _ImageBlockState extends State<ImageBlock> {
     return CachedNetworkImage(
       imageUrl: widget.image.downloadUrl ?? '',
       imageBuilder: (context, imageProvider) => Container(
-        width: widget.image.width?.toDouble(),
-        height: widget.image.height?.toDouble(),
         decoration: BoxDecoration(
-          image: DecorationImage(
-            image: imageProvider,
-            fit: BoxFit.fill,
-          ),
-        ),
+            borderRadius: widget.borderRaduis,
+            image: DecorationImage(image: imageProvider, fit: BoxFit.fill)),
       ),
-      placeholder: (context, url) => Center(
-        child: LoadingAnimationWidget.beat(
-          size: 40,
-          color: const Color(0xFFEA3799),
+      placeholder: (context, url) => Container(
+        alignment: Alignment.center,
+        decoration: BoxDecoration(
+          color: AppColor.mainColor,
+          borderRadius: widget.borderRaduis,
         ),
+        child: LoadingAnimationWidget.beat(
+            size: 40, color: AppColor.mainColor.withOpacity(1)),
       ),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );

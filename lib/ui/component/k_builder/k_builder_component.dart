@@ -2,21 +2,22 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:img_gallaries_mini_app/extention/widget_extension.dart';
 import 'package:img_gallaries_mini_app/util/igm_enum.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class KBuilderComponent extends StatelessWidget {
   final Rx<ApiStatus> apiStatus;
   final Widget Function(BuildContext, ApiStatus) builder;
-  final Widget? error;
-  final Widget? empty;
-  final Widget? loading;
+  final VoidCallback? onError;
+  final VoidCallback? onEmpty;
+  final VoidCallback? loading;
   const KBuilderComponent(
       {Key? key,
       required this.apiStatus,
       required this.builder,
-      this.error,
-      this.empty,
+      this.onError,
+      this.onEmpty,
       this.loading})
       : super(key: key);
 
@@ -24,11 +25,13 @@ class KBuilderComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     return NetworkConnectionWidget(
       builder: (context) => Obx(() {
+        String msg = apiStatus.value.msg;
         switch (apiStatus.value) {
           case ApiStatus.empty:
-            return emptyComponent();
+            return _retryWidget(msg);
           case ApiStatus.error:
-            return errorComponent();
+          case ApiStatus.connectionError:
+            return _retryWidget(msg);
           case ApiStatus.loaded:
             return builder.call(context, apiStatus.value);
 
@@ -56,6 +59,17 @@ class KBuilderComponent extends StatelessWidget {
       child: Text(apiStatus.string),
     );
   }
+
+  _retryWidget(String msg) => Center(
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(msg),
+              16.height,
+              ElevatedButton(onPressed: onError, child: Text('Retry'))
+            ]),
+      );
 }
 
 class NetworkConnectionWidget extends StatelessWidget {
