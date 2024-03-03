@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:img_gallaries_mini_app/model/igm_image.dart';
 import 'package:img_gallaries_mini_app/util/app_color.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class ImageBlock extends StatefulWidget {
   const ImageBlock(
@@ -46,8 +47,12 @@ class _ImageBlockState extends State<ImageBlock> {
           ),
         ),
       ),
-      placeholder: (context, url) =>
-          const Center(child: CircularProgressIndicator()),
+      placeholder: (context, url) => Center(
+        child: LoadingAnimationWidget.beat(
+          size: 40,
+          color: const Color(0xFFEA3799),
+        ),
+      ),
       errorWidget: (context, url, error) => const Icon(Icons.error),
     );
   }

@@ -7,6 +7,7 @@ import 'package:img_gallaries_mini_app/extention/textstyle_extension.dart';
 import 'package:img_gallaries_mini_app/model/igm_image.dart';
 import 'package:img_gallaries_mini_app/service/config.dart';
 import 'package:img_gallaries_mini_app/ui/component/gallary/img_card.dart';
+import 'package:img_gallaries_mini_app/ui/component/k_builder/k_builder_component.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -40,14 +41,18 @@ class _HomePageState extends State<HomePage> {
                     /// all value from box
                     List<IGMImage>? gallary = (box.values).toList();
 
-                    return ListView.builder(
-                      itemCount: (gallary).length,
-                      itemBuilder: (context, i) {
-                        IGMImage img = gallary[i];
+                    return KBuilderComponent(
+                        apiStatus: controller.gallariesResult.apiStatus,
+                        builder: (context, status) {
+                          return ListView.builder(
+                            itemCount: (gallary).length,
+                            itemBuilder: (context, i) {
+                              IGMImage img = gallary[i];
 
-                        return ImgCard(image: img);
-                      },
-                    );
+                              return ImgCard(image: img);
+                            },
+                          );
+                        });
                   }),
             );
           }),

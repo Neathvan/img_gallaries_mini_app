@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:img_gallaries_mini_app/util/igm_enum.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class KBuilderComponent extends StatelessWidget {
   final Rx<ApiStatus> apiStatus;
@@ -35,9 +36,9 @@ class KBuilderComponent extends StatelessWidget {
   }
 
   Center loadingComponent() {
-    return const Center(
-      child: CircularProgressIndicator(),
-    );
+    return Center(
+        child: LoadingAnimationWidget.inkDrop(
+            size: 50, color: const Color(0xFFEA3799)));
   }
 
   Center errorComponent() {
