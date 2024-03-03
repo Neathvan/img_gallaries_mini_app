@@ -1,9 +1,15 @@
-enum APIStatus {
-  unInitialized,
-  loading,
-  loaded,
+enum ApiStatus {
+  connectionError,
   empty,
   error,
-  connectionError,
-  expired
+  loaded,
+  loading;
+
+  String get msg => switch (this) {
+        connectionError => 'No internet connection',
+        empty => 'Empty list',
+        error => 'Something went wrong!',
+        loaded => 'Sucess',
+        loading => 'Loading..'
+      };
 }

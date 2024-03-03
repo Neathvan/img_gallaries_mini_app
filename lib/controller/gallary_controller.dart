@@ -5,7 +5,7 @@ import 'package:img_gallaries_mini_app/model/igm_image.dart';
 import 'package:img_gallaries_mini_app/repository/gallary_repository.dart';
 import 'package:img_gallaries_mini_app/service/api_result.dart';
 import 'package:img_gallaries_mini_app/service/config.dart';
-import 'package:img_gallaries_mini_app/ui/component/k_builder/k_builder_component.dart';
+import 'package:img_gallaries_mini_app/util/igm_enum.dart';
 
 class GallaryController extends BaseController<GallaryRepository> {
   GallaryController() : super(GallaryRepository());

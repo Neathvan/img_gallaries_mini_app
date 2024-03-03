@@ -1,8 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-enum ApiStatus { connectionError, empty, error, loaded, loading }
+import 'package:img_gallaries_mini_app/util/igm_enum.dart';
 
 class KBuilderComponent extends StatelessWidget {
   final Rx<ApiStatus> apiStatus;
