@@ -11,6 +11,8 @@ class GallaryController extends BaseController<GallaryRepository> {
   }
 
   Future getList() async {
-    await repo.getList();
+    var res = await repo.getList();
+
+    print(res.data!.length);
   }
 }

@@ -9,7 +9,7 @@ class WebUtil {
       baseUrl: IGMConfig.baseUrl,
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       receiveDataWhenStatusError: true,
       connectTimeout: const Duration(seconds: 60), // 60 seconds
@@ -41,9 +41,27 @@ class Api {
     return e.response!;
   }
 
-  Future post(String path, Map<String, dynamic>? params) async {
+  Future post(String path, {Map<String, dynamic>? params}) async {
     try {
       var response = await WebUtil.createDio().post(path, data: params);
+      log("Response ::: ${response.data}");
+      return response;
+    } on DioException catch (e) {
+      if (e.type == DioExceptionType.connectionTimeout) {
+        return e;
+      }
+
+      return e;
+    }
+  }
+
+  Future get(String path,
+      {Map<String, dynamic>? params, Map<String, dynamic>? header}) async {
+    try {
+      var response = await WebUtil.createDio().get(
+          'https://picsum.photos/v2/list?page=2&limit=10',
+          data: params,
+          options: Options(headers: header));
       log("Response ::: ${response.data}");
       return response;
     } on DioException catch (e) {

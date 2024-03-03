@@ -1,5 +1,5 @@
-import 'package:get/get.dart';
-
+import 'package:get/get.dart' hide Response;
+import 'package:dio/dio.dart';
 import '../ui/component/k_builder/k_builder_component.dart';
 
 class ApiResult<T> {
@@ -12,12 +12,10 @@ class ApiResult<T> {
 
   Rx<ApiStatus>? get _apiStatus => apiStatus;
   // set _apiStatus(ApiS) => apiStatus;
-  factory ApiResult.fromJson(response,
-      [T Function(Map<String, dynamic>)? method]) {
-    Map<String, dynamic> json = response.data;
-
+  factory ApiResult.fromJson(Response response, [T Function(dynamic)? data]) {
     ApiResult<T> apiResult = ApiResult<T>();
-    apiResult.data = method!.call(json['data']);
+
+    apiResult.data = data?.call(response.data);
     apiResult.apiStatus(ApiStatus.loaded);
     return apiResult;
   }

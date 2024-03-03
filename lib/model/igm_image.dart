@@ -18,33 +18,34 @@ class IGMImage extends BaseModel {
 
   @HiveField(1)
   @JsonValue('')
-  String? name;
+  String? id;
 
   @HiveField(2)
-  String? largeUrl;
+  String? author;
 
   @HiveField(3)
-  String? mediumUrl;
+  int? width;
 
   @HiveField(4)
-  String? text;
+  int? height;
 
   @HiveField(5)
-  @JsonKey( defaultValue: '')
+  @JsonKey(defaultValue: '')
   @JsonValue('')
-  String? image;
+  String? downloadUrl;
 
-  @JsonValue(0)
-  late int path;
+  // @JsonKey(ignore: true)
+  // @JsonValue(0)
+  // late int path;
 
-  /// 
+  ///
   @JsonKey(ignore: true)
   File? file;
 
   @JsonKey(ignore: true)
   Rx<APIStatus> uploadFileStatus = APIStatus.empty.obs;
 
-  @JsonValue(true) 
+  @JsonValue(true)
   @JsonKey(ignore: true)
   bool isOnServer = true;
 
@@ -54,5 +55,4 @@ class IGMImage extends BaseModel {
       _$IGMImageFromJson(json);
 
   Map<String, dynamic> toJson() => _$IGMImageToJson(this);
-
 }

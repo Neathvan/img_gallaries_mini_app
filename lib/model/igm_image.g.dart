@@ -8,19 +8,17 @@ part of 'igm_image.dart';
 
 IGMImage _$IGMImageFromJson(Map<String, dynamic> json) => IGMImage()
   ..url = json['url'] as String?
-  ..name = json['name'] as String?
-  ..largeUrl = json['large_url'] as String?
-  ..mediumUrl = json['medium_url'] as String?
-  ..text = json['text'] as String?
-  ..image = json['image'] as String? ?? ''
-  ..path = json['path'] as int;
+  ..id = json['id'] as String?
+  ..author = json['author'] as String?
+  ..width = json['width'] as int?
+  ..height = json['height'] as int?
+  ..downloadUrl = json['download_url'] as String? ?? '';
 
 Map<String, dynamic> _$IGMImageToJson(IGMImage instance) => <String, dynamic>{
       'url': instance.url,
-      'name': instance.name,
-      'large_url': instance.largeUrl,
-      'medium_url': instance.mediumUrl,
-      'text': instance.text,
-      'image': instance.image,
-      'path': instance.path,
+      'id': instance.id,
+      'author': instance.author,
+      'width': instance.width,
+      'height': instance.height,
+      'download_url': instance.downloadUrl,
     };
