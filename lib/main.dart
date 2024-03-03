@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:img_gallaries_mini_app/controller/gallary_controller.dart';
+import 'package:img_gallaries_mini_app/model/igm_image.dart';
 import 'package:img_gallaries_mini_app/service/config.dart';
-import 'package:img_gallaries_mini_app/ui/home_page.dart';
 import 'package:img_gallaries_mini_app/util/app_color.dart';
 import 'package:img_gallaries_mini_app/util/app_route.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(IGMImageAdapter());
+  await Hive.openBox<IGMImage>(IGMImage.boxName);
   runApp(const MyApp());
 }
 
