@@ -17,12 +17,6 @@ class GallaryController extends BaseController<GallaryRepository> {
   /// BOX-
   Box<IGMImage> gallaryBox = Hive.box<IGMImage>(IGMImage.boxName);
 
-  @override
-  void onInit() {
-    getList();
-    super.onInit();
-  }
-
   Future<ApiResult<List<IGMImage>>> getList({bool loadMore = false}) async {
     int page = !loadMore ? 0 : gallariesResult.data!.length;
 

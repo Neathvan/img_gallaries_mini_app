@@ -16,29 +16,41 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final GallaryController gallaryController =
+      Get.put<GallaryController>(GallaryController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:
           AppBar(title: Text(IGMConfig.appName, style: Get.textTheme.black13)),
-      body: GetBuilder<GallaryController>(builder: (controller) {
-        return EasyRefresh(
-          // onRefresh: () => controller.getList(),
-          // onLoad: () => controller.getList(loadMore: true),
-          child: ValueListenableBuilder<Box<IGMImage>>(
-              valueListenable: controller.gallaryBox.listenable(),
-              builder: (context, box, child) {
-                List<IGMImage>? gallary = (box.values).toList();
-                return ListView.builder(
-                  itemCount: (gallary).length,
-                  itemBuilder: (context, i) {
-                    IGMImage img = gallary[i];
-                    return ImgCard(image: img);
-                  },
-                );
-              }),
-        );
-      }),
+      body: GetBuilder<GallaryController>(
+          autoRemove: false,
+          init: gallaryController,
+          initState: (state) => gallaryController.getList(),
+          builder: (controller) {
+            return EasyRefresh(
+              onRefresh: () => controller.getList(),
+              onLoad: () => controller.getList(loadMore: true),
+
+              /// read image from box
+              child: ValueListenableBuilder<Box<IGMImage>>(
+                  valueListenable: controller.gallaryBox.listenable(),
+                  builder: (context, box, child) {
+                    /// all value from box
+                    List<IGMImage>? gallary = (box.values).toList();
+
+                    return ListView.builder(
+                      itemCount: (gallary).length,
+                      itemBuilder: (context, i) {
+                        IGMImage img = gallary[i];
+
+                        return ImgCard(image: img);
+                      },
+                    );
+                  }),
+            );
+          }),
     );
   }
 }

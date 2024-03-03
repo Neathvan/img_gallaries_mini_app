@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,8 +16,9 @@ class ImageDetailPage extends StatefulWidget {
 }
 
 class _ImageDetailPageState extends State<ImageDetailPage> {
-  final GallaryController controller = Get.find();
+  final GallaryController controller = Get.find<GallaryController>();
   late IGMImage image;
+
   @override
   void initState() {
     image = widget.image;
@@ -34,7 +33,7 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
         title: const Text('Detail'),
       ),
       body: SafeArea(
-        child: GetBuilder(
+        child: GetBuilder<GallaryController>(
             init: controller,
             builder: (controller) {
               return EasyRefresh(
