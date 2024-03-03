@@ -1,8 +1,8 @@
 class Endpoint {
-  static  const String _v = 'v2/';
+  static const String _v = 'v2/';
 
   /// endpoints - IMAGES
-  static const imgList = 'list';
-  
+  static final imgList = addV2('list');
+
   static addV2(String endpoint) => _v + endpoint;
 }

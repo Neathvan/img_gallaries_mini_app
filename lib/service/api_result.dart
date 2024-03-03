@@ -9,6 +9,7 @@ class ApiResult<T> {
   ApiResult();
 
   Rx<ApiStatus> apiStatus = ApiStatus.loading.obs;
+
   Rx<ApiStatus>? get _apiStatus => apiStatus;
   // set _apiStatus(ApiS) => apiStatus;
   factory ApiResult.fromJson(response,

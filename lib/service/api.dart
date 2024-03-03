@@ -3,7 +3,6 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:img_gallaries_mini_app/service/config.dart';
 
-
 class WebUtil {
   static Dio createDio() {
     var dio = Dio(BaseOptions(
@@ -13,8 +12,8 @@ class WebUtil {
         'Content-Type': 'application/json',
       },
       receiveDataWhenStatusError: true,
-      connectTimeout:const Duration(seconds: 60), // 60 seconds
-      receiveTimeout:const Duration(seconds: 60), // 60 seconds
+      connectTimeout: const Duration(seconds: 60), // 60 seconds
+      receiveTimeout: const Duration(seconds: 60), // 60 seconds
     ));
 
     dio.interceptors.add(LogInterceptor(
@@ -42,7 +41,7 @@ class Api {
     return e.response!;
   }
 
-  Future post(String path, Map<String, dynamic> params) async {
+  Future post(String path, Map<String, dynamic>? params) async {
     try {
       var response = await WebUtil.createDio().post(path, data: params);
       log("Response ::: ${response.data}");

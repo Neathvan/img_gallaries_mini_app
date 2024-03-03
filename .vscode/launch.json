@@ -1,0 +1,34 @@
+/*
+ * File: launch.json
+ * Project: .vscode
+ * -----
+ * Created Date: Friday September 22nd 2023
+ * Author: Sony Sum
+ * -----
+ * Copyright (c) 2023 ERROR-DEV All rights reserved.
+ */
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "igm_mobile",
+            "request": "launch",
+            "type": "dart"
+        },
+        {
+            "name": "igm_mobile (profile mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "profile"
+        },
+        {
+            "name": "igm_mobile (release mode)",
+            "request": "launch",
+            "type": "dart",
+            "flutterMode": "release"
+        }
+    ]
+}
