@@ -30,8 +30,9 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:
-          AppBar(title: Text(IGMConfig.appName, style: Get.textTheme.black13)),
+      appBar: AppBar(
+          title: Text(IGMConfig.appName.capitalizeFirst!,
+              style: Get.textTheme.black13)),
       body: GetBuilder<GallaryController>(
           autoRemove: false,
           init: gallaryController,

@@ -12,7 +12,8 @@ class ImgCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.toNamed(RouteName.imageDetail, arguments: {'image': image});
+        Get.toNamed(RouteName.imageDetail,
+            arguments: {'image': image}, preventDuplicates: false);
       },
       child: SizedBox(
         width: 80,
