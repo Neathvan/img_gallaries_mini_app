@@ -9,6 +9,7 @@ class GallaryController extends BaseController<GallaryRepository> {
   GallaryController() : super(GallaryRepository());
 
   ApiResult<List<IGMImage>> gallariesResult = ApiResult()..data = [];
+  ApiResult<IGMImage> imageDetailResult = ApiResult();
 
   @override
   void onInit() {
@@ -32,5 +33,13 @@ class GallaryController extends BaseController<GallaryRepository> {
     }
     update();
     return res;
+  }
+
+  Future<ApiResult<IGMImage>> getImageDetail(String id) async {
+    return await repo.getImageDetail(id).then((value) {
+      imageDetailResult = value;
+      update();
+      return value;
+    });
   }
 }

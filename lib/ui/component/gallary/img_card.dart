@@ -4,6 +4,7 @@ import 'package:img_gallaries_mini_app/extention/textstyle_extension.dart';
 import 'package:img_gallaries_mini_app/extention/widget_extension.dart';
 import 'package:img_gallaries_mini_app/model/igm_image.dart';
 import 'package:img_gallaries_mini_app/ui/component/gallary/image_block.dart';
+import 'package:img_gallaries_mini_app/util/app_route.dart';
 
 class ImgCard extends StatelessWidget {
   final IGMImage image;
@@ -12,7 +13,9 @@ class ImgCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Get.toNamed(RouteName.imageDetail, arguments: {'image': image});
+      },
       child: Container(
         margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [

@@ -1,4 +1,5 @@
-import 'package:get/get_navigation/src/routes/get_route.dart';
+import 'package:get/get.dart';
+import 'package:img_gallaries_mini_app/ui/gallary/image_detail_page.dart';
 import 'package:img_gallaries_mini_app/ui/home_page.dart';
 
 class AppRoute {
@@ -9,7 +10,7 @@ class AppRoute {
     ),
     GetPage(
       name: RouteName.imageDetail,
-      page: () => const HomePage(),
+      page: () => ImageDetailPage(image: Get.arguments['image']),
     ),
   ];
 }

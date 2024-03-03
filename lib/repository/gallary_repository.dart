@@ -12,4 +12,10 @@ class GallaryRepository extends BaseRepository {
       return List.from(data.map((e) => IGMImage.fromJson(e)));
     });
   }
+
+  Future<ApiResult<IGMImage>> getImageDetail(String id) async {
+    var res = await requestGet(Endpoint.imageDetail(id));
+
+    return ApiResult.fromJson(res, (data) => IGMImage.fromJson(data));
+  }
 }

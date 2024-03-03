@@ -3,7 +3,9 @@ class Endpoint {
 
   /// endpoints - IMAGES
   static final imgList = addV2('list');
+  static String imageDetail(String id) => '/id/$id/info';
 
+  //
   static addV2(String endpoint) => _v + endpoint;
 
   ///
