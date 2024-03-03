@@ -1,3 +1,4 @@
+import 'package:get/get.dart';
 import 'package:img_gallaries_mini_app/controller/base_controller.dart';
 import 'package:img_gallaries_mini_app/model/igm_image.dart';
 import 'package:img_gallaries_mini_app/repository/gallary_repository.dart';
@@ -9,7 +10,8 @@ class GallaryController extends BaseController<GallaryRepository> {
   GallaryController() : super(GallaryRepository());
 
   ApiResult<List<IGMImage>> gallariesResult = ApiResult()..data = [];
-  ApiResult<IGMImage> imageDetailResult = ApiResult();
+  ApiResult<IGMImage> imageDetailResult = ApiResult()
+    ..apiStatus = ApiStatus.loaded.obs;
 
   @override
   void onInit() {
@@ -35,8 +37,9 @@ class GallaryController extends BaseController<GallaryRepository> {
     return res;
   }
 
-  Future<ApiResult<IGMImage>> getImageDetail(String id) async {
-    return await repo.getImageDetail(id).then((value) {
+  Future<ApiResult<IGMImage>> getImageDetail(IGMImage image) async {
+    imageDetailResult.data = image;
+    return await repo.getImageDetail(image.id!).then((value) {
       imageDetailResult = value;
       update();
       return value;

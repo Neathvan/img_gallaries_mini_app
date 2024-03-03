@@ -9,7 +9,8 @@ class GallaryRepository extends BaseRepository {
         page: page, limit: limit);
 
     return ApiResult.fromJson(res, (data) {
-      return List.from(data.map((e) => IGMImage.fromJson(e)));
+      return List.from(data.map((e) => IGMImage.fromJson(
+          {'id': e['id'], 'download_url': e['download_url']})));
     });
   }
 
