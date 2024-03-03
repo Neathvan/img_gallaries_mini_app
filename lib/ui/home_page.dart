@@ -3,6 +3,7 @@ import 'package:easy_refresh/easy_refresh.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:img_gallaries_mini_app/controller/gallary_controller.dart';
 import 'package:img_gallaries_mini_app/extention/textstyle_extension.dart';
 import 'package:img_gallaries_mini_app/model/igm_image.dart';
@@ -25,9 +26,9 @@ class _HomePageState extends State<HomePage> {
           AppBar(title: Text(IGMConfig.appName, style: Get.textTheme.black13)),
       body: GetBuilder<GallaryController>(builder: (controller) {
         return EasyRefresh(
-          // onRefresh: () async => await controller.getList(),
+          onRefresh: () => controller.getList(),
+          onLoad: () => controller.getList(loadMore: true),
           child: ListView.builder(
-            // cacheExtent: 999,
             itemCount: controller.gallariesResult.data?.length,
             itemBuilder: (context, i) {
               IGMImage img = controller.gallariesResult.data![i];
