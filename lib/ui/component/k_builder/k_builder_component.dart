@@ -7,6 +7,8 @@ import 'package:img_gallaries_mini_app/util/app_color.dart';
 import 'package:img_gallaries_mini_app/util/igm_enum.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
+/// Widget which handle widget base on [ApiStatus]
+
 class KBuilderComponent extends StatelessWidget {
   final Rx<ApiStatus> apiStatus;
   final Widget Function(BuildContext, ApiStatus) builder;
@@ -46,8 +48,7 @@ class KBuilderComponent extends StatelessWidget {
 
   Center loadingComponent() {
     return Center(
-        child: LoadingAnimationWidget.staggeredDotsWave(
-            size: 30, color: AppColor.black));
+        child: LoadingAnimationWidget.inkDrop(size: 40, color: AppColor.black));
   }
 
   Center errorComponent() {
@@ -74,6 +75,7 @@ class KBuilderComponent extends StatelessWidget {
       );
 }
 
+/// Responsible network connection by [Connectivity] streamming
 class NetworkConnectionWidget extends StatelessWidget {
   final Widget Function(BuildContext) builder;
   const NetworkConnectionWidget({super.key, required this.builder});
