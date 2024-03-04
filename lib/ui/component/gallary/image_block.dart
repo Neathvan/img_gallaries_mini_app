@@ -27,19 +27,15 @@ class _ImageBlockState extends State<ImageBlock> {
 
   Widget _imageW() {
     return CachedNetworkImage(
-      imageUrl: widget.image.downloadUrl ?? '',
-      memCacheHeight: widget.memCacheHeight,
-      memCacheWidth: widget.memCacheWidth,
-      placeholder: (context, url) => Container(
-        alignment: Alignment.center,
-        decoration: BoxDecoration(
-          color: AppColor.mainColor,
-          borderRadius: widget.borderRaduis,
-        ),
-        child: LoadingAnimationWidget.beat(size: 20, color: AppColor.black),
-      ),
-      errorWidget: (context, url, error) => const Icon(Icons.error),
-    );
+        imageUrl: widget.image.downloadUrl ?? '',
+        memCacheHeight: widget.memCacheHeight,
+        memCacheWidth: widget.memCacheWidth,
+        placeholder: (context, url) => Container(
+            color: AppColor.mainColor,
+            alignment: Alignment.center,
+            child: LoadingAnimationWidget.staggeredDotsWave(
+                size: 20, color: AppColor.black)),
+        errorWidget: (context, url, error) => const Icon(Icons.error));
   }
 
   @override

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart';
 import 'package:img_gallaries_mini_app/extention/widget_extension.dart';
+import 'package:img_gallaries_mini_app/util/app_color.dart';
 import 'package:img_gallaries_mini_app/util/igm_enum.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
@@ -26,6 +27,7 @@ class KBuilderComponent extends StatelessWidget {
     return NetworkConnectionWidget(
       builder: (context) => Obx(() {
         String msg = apiStatus.value.msg;
+
         switch (apiStatus.value) {
           case ApiStatus.empty:
             return _retryWidget(msg);
@@ -44,8 +46,8 @@ class KBuilderComponent extends StatelessWidget {
 
   Center loadingComponent() {
     return Center(
-        child: LoadingAnimationWidget.inkDrop(
-            size: 50, color: const Color(0xFFEA3799)));
+        child: LoadingAnimationWidget.staggeredDotsWave(
+            size: 30, color: AppColor.black));
   }
 
   Center errorComponent() {
@@ -67,7 +69,7 @@ class KBuilderComponent extends StatelessWidget {
             children: [
               Text(msg),
               16.height,
-              ElevatedButton(onPressed: onError, child: Text('Retry'))
+              ElevatedButton(onPressed: onError, child: const Text('Retry'))
             ]),
       );
 }

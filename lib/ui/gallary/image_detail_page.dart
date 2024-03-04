@@ -21,11 +21,12 @@ class ImageDetailPage extends StatefulWidget {
 class _ImageDetailPageState extends State<ImageDetailPage> {
   final GallaryController controller = Get.find<GallaryController>();
   late IGMImage image;
-
+  List<IGMImage> gallary = [];
   @override
   void initState() {
     image = widget.image;
     getDetail();
+    gallary = controller.gallaryBox.values.toList()..shuffle();
     super.initState();
   }
 
@@ -45,18 +46,18 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
                   child: ValueListenableBuilder<Box<IGMImage>>(
                     valueListenable: controller.gallaryBox.listenable(),
                     builder: (context, box, child) {
-                      List<IGMImage>? gallary = box.values.toList()..shuffle();
-
                       return ListView(
                         children: [
-                          ImageBlock(image: image),
+                          ImageBlock(
+                            image: image,
+                            memCacheWidth: null,
+                            memCacheHeight: null,
+                          ),
                           Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              Text(
-                                "Image detail".toUpperCase(),
-                                style: Get.textTheme.blue17W600,
-                              ),
+                              Text("Image detail".toUpperCase(),
+                                  style: Get.textTheme.blue17W600),
                               8.height,
                               cellItem("id", image.id),
                               cellItem("author", image.author),
@@ -66,16 +67,23 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
                               cellItem("download url", image.downloadUrl)
                             ],
                           ).marginAll(16),
-                          28.height,
-                          Align(
-                            alignment: Alignment.topCenter,
-                            child: Wrap(
-                                spacing: 10.0,
-                                runSpacing: 10.0,
-                                children: gallary
-                                    .take(10)
-                                    .map((e) => ImgCard(image: e))
-                                    .toList()),
+                          8.height,
+                          Column(
+                            children: [
+                              Text("Image lists".toUpperCase(),
+                                  style: Get.textTheme.blue17W600),
+                              16.height,
+                              Align(
+                                alignment: Alignment.topCenter,
+                                child: Wrap(
+                                    spacing: 10.0,
+                                    runSpacing: 10.0,
+                                    children: gallary
+                                        .take(9)
+                                        .map((e) => ImgCard(image: e))
+                                        .toList()),
+                              ),
+                            ],
                           )
                         ],
                       );

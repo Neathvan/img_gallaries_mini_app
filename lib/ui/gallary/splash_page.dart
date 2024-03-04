@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:img_gallaries_mini_app/extention/widget_extension.dart';
 import 'package:img_gallaries_mini_app/service/data_store_service.dart';
+import 'package:img_gallaries_mini_app/util/app_color.dart';
 import 'package:img_gallaries_mini_app/util/app_route.dart';
+import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
@@ -28,7 +31,15 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FlutterLogo(),
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const FlutterLogo(size: 100),
+          16.height,
+          LoadingAnimationWidget.staggeredDotsWave(
+              size: 100, color: AppColor.black)
+        ],
+      ),
     );
   }
 }

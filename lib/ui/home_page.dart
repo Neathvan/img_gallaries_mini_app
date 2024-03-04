@@ -24,19 +24,17 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    gallaryController.getList();
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          title: Text(IGMConfig.appName.capitalizeFirst!,
-              style: Get.textTheme.black13)),
+      appBar:
+          AppBar(title: Text(IGMConfig.appName, style: Get.textTheme.black13)),
       body: GetBuilder<GallaryController>(
-          autoRemove: false,
           init: gallaryController,
-          initState: (state) => gallaryController.getList(),
           builder: (controller) {
             return EasyRefresh(
               header: const MaterialHeader(clamping: false),
@@ -58,7 +56,7 @@ class _HomePageState extends State<HomePage> {
                         (apiStatus.value == ApiStatus.connectionError ||
                             apiStatus.value == ApiStatus.error);
 
-                    /// wtih local data
+                    /// recheck wtih local data
                     if (isError && gallary.isNotEmpty) {
                       apiStatus(ApiStatus.loaded);
                     }
@@ -83,7 +81,7 @@ class _HomePageState extends State<HomePage> {
                                             .toList()),
                                   );
                                 }),
-                          ),
+                          ).marginOnly(top: 16),
                         ),
                       );
                     });
