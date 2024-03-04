@@ -1,3 +1,4 @@
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:get/get.dart' hide Response;
 import 'package:dio/dio.dart';
 import 'package:img_gallaries_mini_app/util/igm_enum.dart';
@@ -31,6 +32,7 @@ class ApiResult<T> {
     }
 
     var _status = statusResponse(response);
+    if (_status != ApiStatus.loaded) EasyLoading.showError(_status.msg);
 
     /// check handle error
     apiResult.apiStatus(_status);
