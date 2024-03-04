@@ -5,7 +5,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:img_gallaries_mini_app/controller/gallary_controller.dart';
 import 'package:img_gallaries_mini_app/extention/textstyle_extension.dart';
 import 'package:img_gallaries_mini_app/model/igm_image.dart';
-import 'package:img_gallaries_mini_app/service/config.dart';
+import 'package:img_gallaries_mini_app/util/config.dart';
 import 'package:img_gallaries_mini_app/ui/component/gallary/img_card.dart';
 import 'package:img_gallaries_mini_app/ui/component/k_builder/k_builder_component.dart';
 
@@ -74,8 +74,8 @@ class _HomePageState extends State<HomePage> {
                                   return Align(
                                     alignment: Alignment.topCenter,
                                     child: Wrap(
-                                        spacing: 10.0,
-                                        runSpacing: 10.0,
+                                        spacing: 16.0,
+                                        runSpacing: 16.0,
                                         children: gallary
                                             .map((e) => ImgCard(image: e))
                                             .toList()),

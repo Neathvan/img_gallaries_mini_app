@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:img_gallaries_mini_app/extention/widget_extension.dart';
 import 'package:img_gallaries_mini_app/service/data_store_service.dart';
 import 'package:img_gallaries_mini_app/util/app_color.dart';
-import 'package:img_gallaries_mini_app/util/app_route.dart';
+import 'package:img_gallaries_mini_app/route/app_route.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 class SplashScreen extends StatefulWidget {

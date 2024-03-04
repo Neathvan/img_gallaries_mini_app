@@ -40,15 +40,23 @@ class KBuilderComponent extends StatelessWidget {
             return builder.call(context, apiStatus.value);
 
           default:
-            return loadingComponent();
+            return loadingComponent(msg);
         }
       }),
     );
   }
 
-  Center loadingComponent() {
+  Center loadingComponent(String msg) {
     return Center(
-        child: LoadingAnimationWidget.inkDrop(size: 40, color: AppColor.black));
+        child: Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Text(msg),
+        16.height,
+        LoadingAnimationWidget.inkDrop(size: 40, color: AppColor.black),
+      ],
+    ));
   }
 
   Center errorComponent() {

@@ -33,9 +33,7 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detail'),
-      ),
+      appBar: AppBar(title: const Text('Detail')),
       body: SafeArea(
         child: GetBuilder<GallaryController>(
             init: controller,
@@ -49,48 +47,49 @@ class _ImageDetailPageState extends State<ImageDetailPage> {
                       return ListView(
                         children: [
                           ImageBlock(
-                            image: image,
-                            memCacheWidth: null,
-                            memCacheHeight: null,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text("Image detail".toUpperCase(),
-                                  style: Get.textTheme.blue17W600),
-                              8.height,
-                              cellItem("id", image.id),
-                              cellItem("author", image.author),
-                              cellItem("width", image.width),
-                              cellItem("height", image.height),
-                              cellItem("url", image.url),
-                              cellItem("download url", image.downloadUrl)
-                            ],
-                          ).marginAll(16),
+                              image: image,
+                              memCacheWidth: null,
+                              memCacheHeight: null),
+                          _detailSection().marginAll(16),
                           8.height,
-                          Column(
-                            children: [
-                              Text("Image lists".toUpperCase(),
-                                  style: Get.textTheme.blue17W600),
-                              16.height,
-                              Align(
-                                alignment: Alignment.topCenter,
-                                child: Wrap(
-                                    spacing: 10.0,
-                                    runSpacing: 10.0,
-                                    children: gallary
-                                        .take(9)
-                                        .map((e) => ImgCard(image: e))
-                                        .toList()),
-                              ),
-                            ],
-                          )
+                          _imageListSection()
                         ],
                       );
                     },
                   ));
             }),
       ),
+    );
+  }
+
+  Column _imageListSection() {
+    return Column(
+      children: [
+        Text("Image lists".toUpperCase(), style: Get.textTheme.blue17W600),
+        16.height,
+        Align(
+          alignment: Alignment.topCenter,
+          child: Wrap(
+              spacing: 10.0,
+              runSpacing: 10.0,
+              children: gallary.take(9).map((e) => ImgCard(image: e)).toList()),
+        ),
+      ],
+    );
+  }
+
+  Column _detailSection() {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        8.height,
+        cellItem("id", image.id),
+        cellItem("author", image.author),
+        cellItem("width", image.width),
+        cellItem("height", image.height),
+        cellItem("url", image.url),
+        cellItem("download url", image.downloadUrl)
+      ],
     );
   }
 

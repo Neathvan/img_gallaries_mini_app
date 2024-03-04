@@ -30,6 +30,7 @@ class _ImageBlockState extends State<ImageBlock> {
         imageUrl: widget.image.downloadUrl ?? '',
         memCacheHeight: widget.memCacheHeight,
         memCacheWidth: widget.memCacheWidth,
+        fit: BoxFit.fill,
         placeholder: (context, url) => Container(
             color: AppColor.mainColor,
             alignment: Alignment.center,

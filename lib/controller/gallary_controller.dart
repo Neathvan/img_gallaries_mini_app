@@ -4,7 +4,7 @@ import 'package:img_gallaries_mini_app/controller/base_controller.dart';
 import 'package:img_gallaries_mini_app/model/igm_image.dart';
 import 'package:img_gallaries_mini_app/repository/gallary_repository.dart';
 import 'package:img_gallaries_mini_app/service/api_result.dart';
-import 'package:img_gallaries_mini_app/service/config.dart';
+import 'package:img_gallaries_mini_app/util/config.dart';
 import 'package:img_gallaries_mini_app/util/igm_enum.dart';
 
 class GallaryController extends BaseController<GallaryRepository> {
@@ -17,6 +17,7 @@ class GallaryController extends BaseController<GallaryRepository> {
   /// BOX-
   Box<IGMImage> gallaryBox = Hive.box<IGMImage>(IGMImage.boxName);
 
+  /// METHODS
   Future<ApiResult<List<IGMImage>>> getList({bool loadMore = false}) async {
     int page = !loadMore ? 0 : gallariesResult.data!.length;
 

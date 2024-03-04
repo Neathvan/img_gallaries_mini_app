@@ -2,7 +2,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 // import 'package:get/get.dart' hide Response;
-import 'package:img_gallaries_mini_app/service/config.dart';
+import 'package:img_gallaries_mini_app/util/config.dart';
 
 abstract class BaseApi {
   late Dio _dio;

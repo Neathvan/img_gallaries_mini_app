@@ -1,9 +1,5 @@
-import 'dart:io';
-
-import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:img_gallaries_mini_app/model/base_model.dart';
-import 'package:img_gallaries_mini_app/util/igm_enum.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'igm_image.g.dart';
@@ -43,7 +39,7 @@ class IGMImage extends BaseModel {
     url = img.url;
     author = img.author;
     width = img.width;
-    height = img.width;
+    height = img.height;
     downloadUrl = img.downloadUrl;
 
     if (isInBox) {
