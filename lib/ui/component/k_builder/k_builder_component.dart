@@ -90,11 +90,14 @@ class NetworkConnectionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Connectivity connectivity = Connectivity();
     return StreamBuilder<ConnectivityResult>(
-        stream: connectivity.onConnectivityChanged,
+        stream: Connectivity().onConnectivityChanged
+          ..listen((event) {
+            EasyLoading.showError(event.name);
+          }),
         builder: (context, AsyncSnapshot<ConnectivityResult> snap) {
-          handleLayoutOfConnection(snap);
+          // print(snap.data);
+
           return builder(context);
         });
   }
@@ -103,10 +106,10 @@ class NetworkConnectionWidget extends StatelessWidget {
     switch (snap.connectionState) {
       case ConnectionState.active:
         final ConnectivityResult state = snap.data!;
+        // print(state);
         switch (state) {
           case ConnectivityResult.none:
-            EasyLoading.showToast("No connection",
-                toastPosition: EasyLoadingToastPosition.bottom);
+          // EasyLoading.showError(ApiStatus.connectionError.msg);
           default:
             return;
         }

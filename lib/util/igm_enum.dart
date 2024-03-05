@@ -13,3 +13,10 @@ enum ApiStatus {
         loading => 'Loading..'
       };
 }
+
+enum GallaryView {
+  list,
+  grid;
+
+  String get reversName => switch (this) { list => 'Grid', grid => 'List' };
+}

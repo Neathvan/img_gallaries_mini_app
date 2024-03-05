@@ -9,6 +9,38 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "64.0.0"
+  ac_connectivity:
+    dependency: "direct main"
+    description:
+      name: ac_connectivity
+      sha256: "164541db10e48662f083fc7229a64731ae2c270e25c00a322ebe351d92ab510c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.3"
+  ac_dart_essentials:
+    dependency: transitive
+    description:
+      name: ac_dart_essentials
+      sha256: "09fadb5f668af72c32075d2b8da06ba25134e04b316501b61530c90b279f675d"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.2"
+  ac_flutter_essentials:
+    dependency: transitive
+    description:
+      name: ac_flutter_essentials
+      sha256: "02a20a9dab809c2397a910c72594efc0baafc72bbe034acf444ff946a25fe261"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.3"
+  ac_inet_connectivity_checker:
+    dependency: transitive
+    description:
+      name: ac_inet_connectivity_checker
+      sha256: dbdeb7e09e2abef3854713aba064bce5e9082a7bee751281c8cfd73a7db3fb01
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.6"
   analyzer:
     dependency: transitive
     description:
@@ -376,6 +408,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  freezed_annotation:
+    dependency: transitive
+    description:
+      name: freezed_annotation
+      sha256: c3fd9336eb55a38cc1bbd79ab17573113a8deccd0ecbbf926cca3c62803b5c2d
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.4.1"
   frontend_server_client:
     dependency: transitive
     description:
@@ -741,6 +781,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.99"
+  sliver_tools:
+    dependency: "direct main"
+    description:
+      name: sliver_tools
+      sha256: eae28220badfb9d0559207badcbbc9ad5331aac829a88cb0964d330d2a4636a6
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.2.12"
   source_gen:
     dependency: transitive
     description:
