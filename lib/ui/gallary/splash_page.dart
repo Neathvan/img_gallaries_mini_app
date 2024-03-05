@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:img_gallaries_mini_app/controller/netwrok_controller.dart';
 import 'package:img_gallaries_mini_app/extention/widget_extension.dart';
 import 'package:img_gallaries_mini_app/service/data_store_service.dart';
 import 'package:img_gallaries_mini_app/util/app_color.dart';
@@ -24,6 +25,8 @@ class _SplashScreenState extends State<SplashScreen> {
   Future initServices() async {
     ///starting services ...
     return await Get.putAsync(() => DataStoreService().init()).then((value) {
+      Get.put<NetworkController>(NetworkController(), permanent: true);
+
       ///All services started...
     });
   }

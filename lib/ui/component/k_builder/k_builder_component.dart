@@ -26,24 +26,22 @@ class KBuilderComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return NetworkConnectionWidget(
-      builder: (context) => Obx(() {
-        String msg = apiStatus.value.msg;
+    return Obx(() {
+      String msg = apiStatus.value.msg;
 
-        switch (apiStatus.value) {
-          case ApiStatus.empty:
-            return _retryWidget(msg);
-          case ApiStatus.error:
-          case ApiStatus.connectionError:
-            return _retryWidget(msg);
-          case ApiStatus.loaded:
-            return builder.call(context, apiStatus.value);
+      switch (apiStatus.value) {
+        case ApiStatus.empty:
+          return _retryWidget(msg);
+        case ApiStatus.error:
+        case ApiStatus.connectionError:
+          return _retryWidget(msg);
+        case ApiStatus.loaded:
+          return builder.call(context, apiStatus.value);
 
-          default:
-            return loadingComponent(msg);
-        }
-      }),
-    );
+        default:
+          return loadingComponent(msg);
+      }
+    });
   }
 
   Center loadingComponent(String msg) {
