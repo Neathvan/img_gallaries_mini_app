@@ -27,7 +27,9 @@ class ImgCard extends StatelessWidget {
         return grid();
       case GallaryView.list:
         return ImageBlock(
-                image: image, memCacheWidth: null, memCacheHeight: null)
+                image: image,
+                memCacheWidth: Get.width.toInt(),
+                memCacheHeight: null)
             .marginSymmetric(horizontal: 16, vertical: 8);
     }
   }
