@@ -8,7 +8,6 @@ import 'package:img_gallaries_mini_app/util/igm_enum.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 
 /// Widget which handle widget base on [ApiStatus]
-
 class KBuilderComponent extends StatelessWidget {
   final Rx<ApiStatus> apiStatus;
   final Widget Function(BuildContext, ApiStatus) builder;

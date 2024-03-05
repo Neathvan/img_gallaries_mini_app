@@ -14,10 +14,11 @@ class GallaryController extends BaseController<GallaryRepository> {
   ApiResult<IGMImage> imageDetailResult = ApiResult()
     ..apiStatus = ApiStatus.loaded.obs;
 
-  /// BOX-
+  // BOX-
   Box<IGMImage> gallaryBox = Hive.box<IGMImage>(IGMImage.boxName);
 
-  /// METHODS
+  // METHODS //
+
   Future<ApiResult<List<IGMImage>>> getList({bool loadMore = false}) async {
     int page = !loadMore ? 0 : gallariesResult.data!.length;
 
@@ -51,7 +52,8 @@ class GallaryController extends BaseController<GallaryRepository> {
     return res;
   }
 
-  /// DEAIL SECTION
+  // DEAIL SECTION //
+
   Future<ApiResult<IGMImage>> getImageDetail(IGMImage igmImage) async {
     imageDetailResult.data = igmImage;
 

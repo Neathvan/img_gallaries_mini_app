@@ -42,7 +42,9 @@ class _HomePageState extends State<HomePage> {
               header: const MaterialHeader(clamping: false),
               footer: const MaterialFooter(clamping: false),
               onRefresh: () => controller.getList(),
-              onLoad: () => controller.getList(loadMore: true),
+              onLoad: () async {
+                return await controller.getList(loadMore: true);
+              },
 
               /// read image from box
               child: ValueListenableBuilder<Box<IGMImage>>(
