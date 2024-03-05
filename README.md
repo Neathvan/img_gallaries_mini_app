@@ -13,5 +13,4 @@
 ```diff
 - FYI
 ! On iOS, the connectivity status might not update when WiFi status changes, this is a known issue that only affects simulators. 
-! Offline mode
 ```
